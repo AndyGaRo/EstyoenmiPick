@@ -38,3 +38,35 @@ def es_nombrelargo(nombre:str) -> bool:
     return print(len(nombre) > 3 and len(nombre) < 8)
 
 es_nombrelargo("Andres")
+
+def es_multiplo(n:int,m:int) -> bool:
+    res:bool = (n %  m) == 0
+    return res
+
+print(es_multiplo(4,5))
+
+def peso_pino(altura:int)->int:
+    primerpeso:int= min(3,altura)
+    segundopeso:int= max(3,altura)
+    return primerpeso*300 + (segundopeso - 3)*200
+
+
+
+def es_peso_util(peso:int) -> bool:
+    return (peso > 400 and peso < 1000) or peso == 400 or peso == 1000 
+
+def sirve_pino(peso:int)->bool:
+    x = peso_pino(peso)
+    y = es_peso_util(x)
+    return y
+
+print(sirve_pino(5))
+    
+
+def numerosdel1al10(n:int)->int:
+        while n > 0:
+            print(n)
+            n-=1
+        print("despegue")
+    
+numerosdel1al10(45)

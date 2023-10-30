@@ -39,5 +39,18 @@ def elementos_exclusivos(s: list, t: list) -> list:
 print(elementos_exclusivos([-1, 4, 0, 4, 3, 0, 100, 0, -1, -1],[0, 100, 5, 0, 100, -1, 5]))
 
 3)
+def contar_traducciones_iguales(ingles: dict, aleman: dict) -> int:
+    res:int=0
+    
+    for clave in ingles:
+        if clave in aleman:
+            if ingles[clave] == aleman[clave]:
+                res+=1
+    return res
+
+print(contar_traducciones_iguales({"Mano": "Hand", "Pie": "Foot", "Dedo": "Finger", "Cara": "Gesicht"},{"Pie": "Foot", "Dedo": "Finger", "Mano": "Hand"}))
+
+4)
+
 
 

@@ -1,1 +1,25 @@
 
+sumadist :: Int -> Int -> Int -> Int
+sumadist x y z
+    | x /= y && x /= z && y /= z = x + y + z
+    | otherwise = 0
+
+prodInt :: (Int, Int) -> (Int, Int) -> Int
+prodInt (a, b) (c, d) = a * c + b * d
+
+todomenor :: (Int, Int) -> (Int, Int) -> Bool
+todomenor (a,b) (c,d) = a < c && b < d
+
+sumarmulti :: (Int, Int, Int) -> Int -> Int
+sumarmulti (a, b, c) i
+    | a `mod` i == 0 && b `mod` i == 0 && c `mod` i == 0 = a + b + c
+    | a `mod` i == 0 && b `mod` i == 0 = a + b
+    | a `mod` i == 0 && c `mod` i == 0 = a + c
+    | b `mod` i == 0 && c `mod` i == 0 = b + c
+    | a `mod` i == 0 = a
+    | b `mod` i == 0 = b
+    | c `mod` i == 0 = c
+    | otherwise = 0
+
+crearpar :: a -> b -> (a,b)
+crearpar a b = (a,b)

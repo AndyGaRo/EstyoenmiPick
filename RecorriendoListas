@@ -182,3 +182,70 @@ def oredenados(cadena:[int])->bool:
     return ordenadoPadre
     
 print(oredenados([10,2,4]))
+
+
+
+---------------------------------------------------------------------------------------
+
+relacionesValidas :: [(String,String)] -> Bool
+relacionesValidas [] = False
+relacionesValidas relaciones = nosonigua relaciones && not (componentesDif relaciones)
+
+
+
+nosonigua :: [(String,String)] -> Bool
+nosonigua [] = False
+nosonigua ((a,b):xs) = a /= b || nosonigua xs
+
+componentesDif :: [(String,String)] -> Bool
+componentesDif [] = False
+componentesDif ((a,b):xs) = comparar (a,b) xs || componentesDif xs
+
+comparar :: (String,String) -> [(String,String)] -> Bool
+comparar _ [] = False
+comparar (a,b) ((x,y):xs) = a == x && b == y || a == y && b == x || comparar (x,y) xs
+
+
+personas :: [(String,String)] -> [String]
+personas [] = []
+personas listadeper
+    | not (relacionesValidas listadeper)  = []
+    | otherwise = noseREp (pasaTupAList listadeper)
+
+
+
+pasaTupAList :: [(String,String)] -> [String]
+pasaTupAList [] = []
+pasaTupAList ((x,y):xs) = x:y:pasaTupAList xs
+
+noseREp :: [String] -> [String]
+noseREp [] = []
+noseREp (x:xs) 
+    | pertenece x xs = noseREp xs
+    | otherwise = x : noseREp xs
+
+
+pertenece :: Eq t => t -> [t] -> Bool
+pertenece _ [] = False
+pertenece n (x:xs)
+    | n == x = True
+    | otherwise = pertenece n xs
+
+amigosDe :: String -> [(String,String)] -> [String]
+amigosDe _ [] = []
+amigosDe persona listaAmi
+    | not (relacionesValidas listaAmi) = []
+    | otherwise = verificarpersona persona listaAmi
+
+verificarpersona :: String -> [(String,String)] -> [String]
+verificarpersona _ [] = []
+verificarpersona perso ((s,d):sd)
+    | perso == s = d : verificarpersona perso sd
+    | perso == d = s : verificarpersona perso sd
+    | otherwise = verificarpersona perso sd
+
+
+
+
+
+

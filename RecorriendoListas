@@ -242,6 +242,25 @@ verificarpersona perso ((s,d):sd)
     | perso == d = s : verificarpersona perso sd
     | otherwise = verificarpersona perso sd
 
+--------------------------------------
+
+personaPopular :: [(String,String)] -> String
+personaPopular [] = "error"
+personaPopular  relaciones = comparadordeGent persona2 relaciones personas relaciones
+
+comparadordeGent :: [String] -> [String] -> String
+comparadordeGent _ [] = "error"
+comparadordeGent [] _ = "error"
+comparadordeGent (x:y:xs) relaciones 
+    | contadorPer x relaciones > contadorPer y relaciones = 
+
+
+
+contadorPer :: Eq t => t -> [t] -> Int
+contadorPer _ [] = 0
+contadorPer n (y:ys)
+    | n == y = 1 + contadorPer x ys
+    | otherwise = contadorPer x ys
 
 
 

@@ -187,23 +187,21 @@ print(oredenados([10,2,4]))
 
 ---------------------------------------------------------------------------------------
 
-relacionesValidas :: [(String,String)] -> Bool
-relacionesValidas [] = False
-relacionesValidas relaciones = nosonigua relaciones && not (componentesDif relaciones)
-
-
+relacionesValidas2 :: [(String,String)] -> Bool
+relacionesValidas2 [] = False
+relacionesValidas2 relaciones = nosonigua relaciones && not (componentesDif relaciones)
 
 nosonigua :: [(String,String)] -> Bool
-nosonigua [] = False
-nosonigua ((a,b):xs) = a /= b || nosonigua xs
+nosonigua [] = True
+nosonigua ((a,b):xs) = a /= b && nosonigua xs
 
 componentesDif :: [(String,String)] -> Bool
-componentesDif [] = False
-componentesDif ((a,b):xs) = comparar (a,b) xs || componentesDif xs
+componentesDif [] = True
+componentesDif ((a,b):xs) = comparar (a,b) xs && componentesDif xs
 
 comparar :: (String,String) -> [(String,String)] -> Bool
-comparar _ [] = False
-comparar (a,b) ((x,y):xs) = a == x && b == y || a == y && b == x || comparar (x,y) xs
+comparar _ [] = True
+comparar (a,b) ((x,y):xs) = ( (a == x && b == y) || (a == y && b == x) ) && comparar (x,y) xs
 
 
 personas :: [(String,String)] -> [String]
